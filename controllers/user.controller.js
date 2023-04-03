@@ -14,7 +14,7 @@ const register = async (req, res)=>{
             email: email,
             password: password,
           });
-          return res.status(200).send({
+          return res.status(201).send({
             message: 'Signup successful'
           });
     } catch(err){
