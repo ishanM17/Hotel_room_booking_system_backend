@@ -3,7 +3,7 @@ const User = require('../models/user');
 const register = async (req, res)=>{
     try{
         const { name, lname, email, password} = req.body;
-        const userExists = await user.findOne({email: email});
+        const userExists = await User.findOne({email: email});
         if(userExists){
             return res.status(400).send({status: 'User already exists'});
         }
@@ -15,8 +15,8 @@ const register = async (req, res)=>{
             password: password,
           });
     } catch(err){
-        return res.code(500).send({
-            message: error.message || 'some error has occurred while vreating user.'
+        return res.status(500).send({
+            message: err.message || 'some error has occurred while creating user.'
         });
     }
 };
