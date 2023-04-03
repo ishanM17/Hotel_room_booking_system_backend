@@ -14,6 +14,9 @@ const register = async (req, res)=>{
             email: email,
             password: password,
           });
+          return res.status(200).send({
+            message: 'Signup successful'
+          });
     } catch(err){
         return res.status(500).send({
             message: err.message || 'some error has occurred while creating user.'
