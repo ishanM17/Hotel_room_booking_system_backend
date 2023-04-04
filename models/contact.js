@@ -16,7 +16,7 @@ const contactSchema = new Schema({
         validate: [validator.isEmail, 'Please enter a valid email address']
     },
     mobile: {
-        type: Number,
+        type: String,
         required: [true, 'Mobile number is required'],
         maxLength: [10, 'Please enter a valid mobile number'],
         minLength: [10, 'Please enter a valid mobile number']
@@ -24,7 +24,7 @@ const contactSchema = new Schema({
     comment: {
         type: String,
         required: [true, 'Please enter a comment'],
-        maxLength: [200, 'comment is too large']
+        maxLength: [400, 'comment is too large']
     }
 });
 

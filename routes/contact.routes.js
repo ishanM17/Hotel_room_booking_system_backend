@@ -1,4 +1,4 @@
-const express = use('express');
+const express = require('express');
 const router = express.Router();
 
 const {
@@ -6,3 +6,5 @@ const {
 } = require('../controllers/contact.controller');
 
 router.post('/post', createPost);
+
+module.exports = router;
