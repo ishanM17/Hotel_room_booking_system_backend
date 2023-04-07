@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const Schema = mongoose.Schema;
 
-const contactSchema = new Schema({
+const bookingSchema  = new Schema({
     name: {
         type: String,
         required: [true, 'Name is required'],
@@ -20,11 +20,25 @@ const contactSchema = new Schema({
         maxLength: [10, 'Please enter a valid mobile number'],
         minLength: [10, 'Please enter a valid mobile number']
     },
-    comment: {
+    room_type: {
         type: String,
-        required: [true, 'Please enter a comment'],
-        maxLength: [400, 'comment is too large']
+        required: [true, 'Room type is required'],
+        default: 'executive',
+        enum: ['executive', 'deluxe', 'luxury']
+    },
+    num_of_rooms: {
+        type: Number,
+        required: [true, 'Number of rooms is required'],
+        default: 1
+    },
+    checkin: {
+        type: Date,
+        required: [true, 'checkin date is required']
+    },
+    checkout: {
+        type: Date,
+        required: [true, 'checkout date is required']
     }
 });
 
-module.exports = mongoose.model('Contact', contactSchema);
+module.exports = mongoose.model('Booking', bookingSchema);

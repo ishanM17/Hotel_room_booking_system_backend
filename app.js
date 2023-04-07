@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user.Routes');
 const contactRoutes = require('./routes/contact.routes');
+const bookingRoutes = require('./routes/booking.routes');
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(express.json());
 
 app.use('/user', userRoutes);
 app.use('/contact', contactRoutes);
+app.use('/book', bookingRoutes);
 
 app.get('/', (req, res)=>{
     res.send('API is up and running...');
