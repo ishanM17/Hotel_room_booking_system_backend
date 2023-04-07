@@ -21,7 +21,7 @@ const bookRoom = async (req, res)=>{
 
 const getBookings = async (req, res)=>{
     try{
-        const bookings = await Booking.find({email: req.params.email});
+        const bookings = await Booking.find({email: req.params.email}).select('-email').select('-mobile');
         if(!bookings){
             return res.send(404).json({error: 'no rooms booked'});
         }
@@ -33,13 +33,13 @@ const getBookings = async (req, res)=>{
 
 const getAll = async (req, res)=>{
     try{
-        const all = await Booking.find();
+        const all = await Booking.find().select('-email').select('-mobile');
         if(!all){
             return res.status(404).json({error: 'no bookings found'});
         }
-        res.status(200).json(all);
+        res.status(200).send(all);
     } catch(err) {
-        return res.status(500).json({error: err.message});
+        return res.status(500).send({error: err.message});
     }
 };
 
