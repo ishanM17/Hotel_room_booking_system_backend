@@ -1,0 +1,17 @@
+[
+    {
+        "room_type": "executive",
+        "availability": 15,
+        "price": 3500
+    },
+    {
+        "room_type": "deluxe",
+        "availability": 6,
+        "price": 4500
+    },
+    {
+        "room_type": "luxury",
+        "availability": 3,
+        "price": 5000
+    }
+]

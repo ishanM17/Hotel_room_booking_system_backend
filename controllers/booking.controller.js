@@ -1,4 +1,3 @@
-const booking = require('../models/booking');
 const Booking = require('../models/booking');
 
 const bookRoom = async (req, res)=>{
@@ -22,8 +21,8 @@ const bookRoom = async (req, res)=>{
 
 const getBookings = async (req, res)=>{
     try{
-        const bookings = await Booking.findMany({email: req.params.email});
-        if(!booking){
+        const bookings = await Booking.find({email: req.params.email});
+        if(!bookings){
             return res.send(404).json({error: 'no rooms booked'});
         }
         res.status(200).json(bookings);
@@ -32,7 +31,20 @@ const getBookings = async (req, res)=>{
     }
 };
 
+const getAll = async (req, res)=>{
+    try{
+        const all = await Booking.find();
+        if(!all){
+            return res.status(404).json({error: 'no bookings found'});
+        }
+        res.status(200).json(all);
+    } catch(err) {
+        return res.status(500).json({error: err.message});
+    }
+};
+
 module.exports = {
     bookRoom,
-    getBookings
+    getBookings,
+    getAll
 };

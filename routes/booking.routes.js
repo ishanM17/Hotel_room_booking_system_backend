@@ -3,10 +3,12 @@ const router = express.Router();
 
 const{
     bookRoom,
-    getBookings
+    getBookings,
+    getAll
 } = require('../controllers/booking.controller');
 
-router.post('/add', bookRoom);
-router.get('/getAll/:id', getBookings);
+router.post('/post', bookRoom);
+router.get('/get/:id', getBookings);
+router.get('/getAll', getAll);
 
 module.exports = router;
