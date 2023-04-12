@@ -11,8 +11,7 @@ const contactSchema = new Schema({
     },
     email: {
         type: String,
-        required: [true, 'Please enter your email'],
-        validate: [validator.isEmail, 'Please enter a valid email address']
+        required: [true, 'Please enter your email']
     },
     mobile: {
         type: String,
