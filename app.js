@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -28,7 +29,7 @@ app.get('/', (req, res)=>{
 mongoose.set('strictQuery', false);
 
 mongoose
-    .connect('mongodb://127.0.0.1:27017/hotel', {useNewUrlParser: true, useUnifiedTopology: true})
+    .connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
     .then((res) => console.log('Connected to MongoDB...'))
     .catch((err) => console.log(err));
 
