@@ -26,7 +26,8 @@ const userSchema = new Schema({
         type: String,
         required: [true, 'Please enter your password'],
         minLength: [6, 'Your password must be at least 6 characters long']
-      }
+      },
+      token: String
 });
 
 userSchema.pre('save', async function (next) {

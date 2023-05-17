@@ -1,8 +1,10 @@
 const User = require('../models/user');
+const jwtToken = require('../utils/jwtToken');
+require('dotenv').config();
 
 const register = async (req, res)=>{
     try{
-        const { name, lname, email, password} = req.body;
+        const { name, lname, email, password } = req.body;
         const userExists = await User.findOne({email: email});
         if(userExists){
             return res.status(400).send({status: 'User already exists'});
@@ -14,9 +16,8 @@ const register = async (req, res)=>{
             email: email,
             password: password,
           });
-          return res.status(201).send({
-            message: 'Signup successful'
-          });
+
+          jwtToken(newUser, res);
     } catch(err){
         return res.status(500).send({
             message: err.message || 'some error has occurred while creating user.'
@@ -37,9 +38,8 @@ const login = async (req, res)=>{
         if(!isPasswordMatched){
             return res.status(401).send({ message: 'Invalid password'});
         }
-        return res.status(200).send({
-            message: 'login successful'
-        });
+
+        jwtToken(user, res);
     } catch(err){
         return res.status(500).send({ message: err.message });
     }
