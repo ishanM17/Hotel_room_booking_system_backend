@@ -14,12 +14,6 @@ const bookingSchema  = new Schema({
         required: [true, 'Please enter your email'],
         validate: [validator.isEmail, 'Please enter a valid email address']
     },
-    mobile: {
-        type: String,
-        required: [true, 'Mobile number is required'],
-        maxLength: [10, 'Please enter a valid mobile number'],
-        minLength: [10, 'Please enter a valid mobile number']
-    },
     room_type: {
         type: String,
         required: [true, 'Room type is required'],

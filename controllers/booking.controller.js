@@ -2,11 +2,10 @@ const Booking = require('../models/booking');
 
 const bookRoom = async (req, res)=>{
     try{
-        const {name, email, mobile, room_type, num_of_rooms, checkin, checkout} = req.body;
+        const {room_type, num_of_rooms, checkin, checkout} = req.body;
         const newBooking = new Booking({
-            name: name,
-            email: email,
-            mobile: mobile,
+            name: req.user.name,
+            email: req.user.email,
             room_type: room_type,
             num_of_rooms: num_of_rooms,
             checkin: checkin,
