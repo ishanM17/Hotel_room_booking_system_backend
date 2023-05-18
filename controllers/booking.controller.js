@@ -25,7 +25,7 @@ const getBookings = async (req, res)=>{
         if(!bookings){
             return res.send(404).json({error: 'no rooms booked'});
         }
-        res.status(200).json(bookings);
+        res.status(200).send(bookings);
     } catch(err) {
         return res.status(500).json({error: err.message});
     }
